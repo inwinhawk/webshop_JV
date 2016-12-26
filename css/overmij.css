@@ -1,0 +1,26 @@
+#profielfoto
+{
+	float:left;
+	margin:10px 20px 20px 0px;	/* top-margin is 10px; right-margin is 20px; bottom margin is 20px; left margin is 0px */
+	width:210px;
+}
+#spacerhobbby
+{
+	padding:5px 5px 80px 5px;
+	margin: 50px 20px 20px 20px;
+	text-align:center;
+}
+
+#hobby
+{
+	padding: 20px 5px 15px 5px;
+	text-align:center;
+}
+
+#iframe
+{
+	width:560px;
+	height:315px;
+	display:inline;
+	
+}

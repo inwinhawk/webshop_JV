@@ -1,0 +1,210 @@
+<html>
+<head>
+		<meta charset="UTF-8"/>
+		<link href="css/reset.css" rel="stylesheet"/>
+		<link href="css/algemeen.css" rel="stylesheet"/>
+		<link href="css/project.css" rel="stylesheet"/>
+		<link href="css/contact.css" rel="stylesheet"/>
+				
+	<script type="text/javascript">
+		<!--	
+			var filter;
+			var voornaam = document.getElementByID("voornaam");
+			var achternaam = document.getElementById("achternaam");
+			var email = document.getElementById("email");
+			var adres = document.getElementById("adres");
+			var gemeente = document.getElementById("gemeente");
+			var wachtwoord = document.getElementById("wachtwoord");
+			
+			function controleer()
+			{
+				var sendmessage = true;
+				if (formulier.voornaam.value == "")
+				{
+					document.getElementById("voornaam").style.border='2px solid red';
+					document.getElementById("alertvoornaam").style.display='inline';
+					sendmessage = false;
+				}
+				else
+				{
+					document.getElementById("voornaam").style.border='1px solid grey';
+					document.getElementById("alertvoornaam").style.display='none';
+				}
+				if (formulier.achternaam.value == "")
+				{
+					document.getElementById("achternaam").style.border='2px solid red';
+					document.getElementById("alertachternaam").style.display='inline';
+					sendmessage = false;
+				}
+				else
+				{
+					document.getElementById("achternaam").style.border='1px solid grey';
+					document.getElementById("alertachternaam").style.display='none';
+				}
+				if (formulier.email.value == "")
+				{
+					document.getElementById("email").style.border='2px solid red';
+					document.getElementById("alertemail").style.display='inline';
+					sendmessage = false;
+				}
+				else 
+				{
+					document.getElementById("email").style.border='1px solid grey';
+					document.getElementById("alertemail").style.display='none';
+				}
+				if(formulier.email.value != "")
+				{
+					var email=formulier.mail.value;
+					filter = /^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i;
+					filter = filter.test(email);
+				
+					if (filter)
+					{
+						document.getElementById("email").style.border='1px solid grey';
+						document.getElementById("alertemail").style.display='none';
+					}
+					else
+					{
+						document.getElementById("email").style.border='2px solid red';
+						document.getElementById("alertemail").style.display='inline';
+						sendmessage = false;
+					}
+				}
+				
+				if (formulier.adres.value == "")
+				{
+					document.getElementById("adres").style.border='2px solid red';
+					document.getElementById("alertadres").style.display='inline';
+					sendmessage = false;
+				}
+				else
+				{
+					document.getElementById("adres").style.border='1px solid grey';
+					document.getElementById("alertadres").style.display='none';
+				}
+				
+				if (formulier.gemeente.value == "")
+				{
+					document.getElementById("gemeente").style.border='2px solid red';
+					document.getElementById("alertgemeente").style.display='inline';
+					sendmessage = false;
+				}
+				else
+				{
+					document.getElementById("gemeente").style.border='1px solid grey';
+					document.getElementById("alertgemeente").style.display='none';
+				}
+				
+				if (formulier.wachtwoord.value == "")
+				{
+					document.getElementById("wachtwoord").style.border='2px solid red';
+					document.getElementById("alertwachtwoord").style.display='inline';
+					sendmessage = false;
+				}
+				else
+				{
+					document.getElementById("wachtwoord").style.border='1px solid grey';
+					document.getElementById("alertwachtwoord").style.display='none';
+				}
+				
+				return sendmessage
+			} 
+			
+			function terug()
+			{
+				document.getElementById("voornaam").style.border='1px solid grey';
+				document.getElementById("alertvoornaam").style.display='none';
+
+				document.getElementById("achternaam").style.border='1px solid grey';
+				document.getElementById("alertachternaam").style.display='none';
+					
+				document.getElementById("email").style.border='1px solid grey';
+				document.getElementById("alertemail").style.display='none';
+
+				document.getElementById("adres").style.border='1px solid grey';
+				document.getElementById("alertadres").style.display='none';
+				
+				document.getElementById("gemeente").style.border='1px solid grey';
+				document.getElementById("alertgemeente").style.display='none';
+				
+				document.getElementById("wachtwoord").style.border='1px solid grey';
+				document.getElementById("alertwachtwoord").style.display='none';
+			} 
+			
+		-->	
+		</script>
+	</head>
+<body>
+<h1>Registratie</h1>
+<hr>
+<form action="" method="post">
+
+            <p> * verplicht in te vullen !!</p><br><br>
+			
+			<p>Voornaam: <span class="verplicht">*</span><span class="alert" id="alertvoornaam">Voornaam is niet ingevuld!</span></p>
+				<input type="text" name="voornaam" id="voornaam"/>
+
+			<p>Achternaam: <span class="verplicht">*</span> <span class="alert" id="alertachternaam">Achternaam is niet ingevuld!</span></p>
+				<input type="text" name="achternaam" id="achternaam" />
+			
+			<p>Adres: <span class="verplicht">*</span> <span class="alert" id="alertadres">Adres is niet ingevuld!</span></p>
+				<input type="text" name="adres" id="adres" />
+				
+			<p>Gemeente: <span class="verplicht">*</span> <span class="alert" id="alertgemeente">Gemeente is niet ingevuld!</span></p>
+				<input type="text" name="gemeente" id="gemeente" />
+			
+			<p>E-mail: <span class="verplicht">*</span> <span class="alert" id="alertemail">Geef een emailadres op!</span></p>
+				<input type="text" name="email" id="email" />
+			
+			<p>Wachtwoord: <span class="verplicht">*</span> <span class="alert" id="alertwachtwoord">Gemeente is niet ingevuld!</span></p>
+				<input type="text" name="wachtwoord" id="wachtwoord" />
+			
+			<br><br><br>
+			<div id="knoppen" >
+				<input type="submit" name="registreer" value="registreer">
+				<input type="reset" onclick="terug(this)" value="Alles leegmaken" >
+			</div>
+			<br>
+        </form>
+		
+
+<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
+<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+		
+<?php
+
+	$connection = mysqli_connect('localhost', 'root', 'root');
+	if (!$connection)
+		{
+			die("Database Connection Failed" . mysqli_error($connection));
+		}
+	$select_db = mysqli_select_db($connection, 'webshop');
+	if (!$select_db)
+		{
+			die("Database Selection Failed" . mysqli_error($connection));
+		}
+
+	if (isset($_POST['registreer']))
+	{
+
+		$achternaam=$_POST["achternaam"];
+		$voornaam = $_POST["voornaam"];
+		$wachtwoord= md5($_POST["wachtwoord"]);
+		$adres=$_POST["adres"];
+		$gemeente=$_POST["gemeente"];
+		$email=$_POST["email"];
+
+		$query = "INSERT INTO Klant (naam, voornaam, adres, gemeente, email, wachtwoord) VALUES ('$achternaam', '$voornaam','$adres','$gemeente','$email')";
+		$result = mysqli_query($connection, $query);
+		if($result){
+			$smsg = "User Created Successfully.";
+		}else{
+			$fmsg ="User Registration Failed";
+		}
+	}
+	
+
+?>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+body{
+
+	margin:10px auto 10px auto;
+	background-color: #D9D9D9; /*rook grijze kleur*/
+	min-width:800px;
+	max-width:1500px;
+}
+
+#startpagina
+{
+	padding:5px 5px 5px 10px;
+	margin-bottom:5px;
+	
+	background-image: url("..//images/blauw.png");
+		-webkit-background-size:cover;		/*css3 code voor safari/chrome*/
+		-moz-background-size:cover;			/*css3 code voor mozilla*/
+		-o-background-size:cover;			/*css3 code voor opera*/
+	background-size:cover; 					/*css3 voor de achtergrond zo groot mogelijk schalen als mogelijk zodat de achtergrondgebied volledig bedekt is door de achtergrond afbeelding.*/
+	border: 1px solid blue;	
+		-webkit-border-radius: 5px;			/*css3 code voor safari/chrome*/
+		-moz-border-radius: 5px;			/*css3 code voor mozilla*/
+	border-radius:5px;						/*algemene css3 code voor afgeronde hoeken*/
+	
+}
+#titel	
+{
+	text-align:center;
+	font-size: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	padding-left: 200px;	
+	color: blue;
+}
+
+#logo
+{
+	height:200px;
+	width:200px;
+	margin-top:10px;
+	margin-right: 100px;
+	margin-bottom: 5px;
+	float: right;
+	
+}
+
+video
+{	
+	width:320px;
+	height:240px;
+	margin: auto 10px auto 15px;
+}
+
+#koppeling
+{
+	text-align:center;			/*text centraal aligneren*/
+	padding:0px 0px 10px 0px;  	/* top-padding: 0px	 right-padding: 0px 	bottom-padding: 10px 	left-padding:0px */
+	clear: both;				/*clear both wil zeggen dat aan beide kanten van de afbeelding niet mag floaten.*/
+}
+
+.koppelingen
+ {
+	height: 150px;
+}
+
+.left 
+{
+  width:800px;
+  margin:0px 5px 5px 0px; 		/* top-padding: 0px	 right-padding: 5px 	bottom-padding: 5px 	left-padding:0px */
+  padding:5px 10px 10px 5px; 	/* top-margin: 5px	 right-margin: 10px 	bottom-margin: 10px 	left-margin:5px */	
+  float: left;
+  clear:both;
+  
+}
+
+.right 
+{
+  width:800px;
+  float:right;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 10px 75px 5px; 	/* top-margin: 5px	 right-margin: 10px 	bottom-margin: 10px 	left-margin:5px */	
+  clear:both;
+}
+
+.schema
+ {
+  padding: 10px 0px 10px 100px;
+  width:400px;
+  height:200px;
+}
+
+.schemasoft
+{
+ padding: 10px 0px 10px 100px;
+  width:350px;
+  height:400px;
+  
+}
+
+.schema:active
+{
+	transform: scale(1.5,1.5);
+		-ms-transform: scale(1.5,1.5); /*css code voor IE 9 */
+		-moz-transform: scale(1.5,1.5); /* css code voor Mozilla*/
+		-webkit-transform: scale(1.5,1.5); /* css code voor Safari & Chrome */
+	margin: 50px 0px 50px 0px;
+}
+
+.schemasoft:active
+{
+	transform: scale(1.5,1.5);
+		-ms-transform: scale(1.5,1.5); /*css code voor IE 9 */
+		-moz-transform: scale(1.5,1.5); /*css code voor Mozilla */
+		-webkit-transform: scale(1.5,1.5); /*css code voor Safari & Chrome */
+	margin: 110px 0px 50px 0px;
+	
+}
+
+
+#slideshow
+ { 
+	padding: 10px 10px 5px 2px;
+	margin:auto;
+	clear: both;
+	position: relative; 
+	width: 650px;
+	height: 475px;
+	overflow: hidden;
+}
+
+#slideshow > div > img 
+{
+
+	width: 624px; 
+    height: 485px; 
+	position:absolute;
+	border: 1px solid blue;
+	text-align:center;
+}
+
+
+
+footer
+{
+	text-align:center;
+	background-color: white;
+	border: 1px solid blue;
+		-webkit-border-radius: 5px;	/* css3 code voor safari/chrome*/
+		-moz-border-radius: 5px;	/*css3 code voor mozilla*/
+	border-radius: 5px;	/*css3 code voor het krommen van de hoeken van de rand*/
+	clear:both;
+}
+
+a {
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 2px;
+    transition: 0.3s;
+}
+
+a:hover 
+{
+    box-shadow: 0px 0px 2px 1px blue;
+}
+
+#thomasmore
+{
+	height:150px;
+	width:300px;
+}
+
+  

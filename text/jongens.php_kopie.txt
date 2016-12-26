@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>	Webshop van Jeroen Vastmans </title>
+
+    <link href="css/reset.css" rel="stylesheet"/>
+    <link href="css/algemeen.css" rel="stylesheet"/>
+    <link href="css/project.css" rel="stylesheet"/>
+    <link href="css/menu.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> 
+
+    
+</head>
+<body>
+
+<div id="content">
+    <div id="spacer">
+        <?php
+        //start the session
+        session_start();
+
+        //check to make sure the session variable is registered
+        if(isset($_SESSION['username']))
+        {
+            include("menu_logout.php");
+        }
+        else
+            include("menu.php");
+
+        ?>
+    </div>
+    <hr>
+    <div id="Resultaten">
+
+                <?php
+    
+               //include hier connect.php == connectie met databank 
+                include "dbconnect.php";
+
+                //Alle categorieën tonen (DISTINCT)
+                 $result = mysqli_query($link,"SELECT * FROM product where categorie='jongen'") or die(mysqli_error());
+
+
+                // output data of each row
+                    while($row = $result->fetch_assoc())
+                    {
+                        echo "<div>";
+                        echo $row["productnaam"]. "<br/>";
+                        
+                        
+                        
+                                                    //als je aparte knop wilt en niet op de afbeelding wilt klikken
+                        
+                       // echo "<img src=\"".$row["ProductAfbeelding"]."\""."<br>";
+                        //<input type=\"submit\" value=\"Submit\">
+                        
+                        
+                        //afbeelding tonen en verwijzen naar productinfo met doorgegeven ID
+                        echo "<a href=\"productinfo.php?ID={$row['product_ID']}\"><img src=\"".$row["afbeelding"]."\"alt=\"afbeelding\" title=\"Meer info\" class = \"productimg\"></a><br>";
+                        
+                        
+                        //naar winkelmandje --> work in progress
+                        echo "<form action = \"Winkelmand.php\">
+                        
+                       <p>Prijs: &#8364;".$row["prijs"]."
+                        <input type=\"submit\" class =\"Inwinkelmand\" value=\"&#128722;\" title=\"In winkelmandje\" action=\"winkelmand.php\"></p>
+                        
+                        
+                        </form>";
+                        
+                      
+
+
+                        echo "</div>";
+                    }
+                 
+				mysqli_close($link);
+                ?>
+
+    </div>	
+	  <hr> 
+
+    <div class="footer-distributed">
+        <?php include "info.php" ?>
+    </div>
+</div>
+<div>
+
+<footer>
+    <div id="voeter">
+        <?php include("footer.php") ?>
+    </div>
+</footer>
+</body>
+</html>
+

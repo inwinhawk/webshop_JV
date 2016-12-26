@@ -1,0 +1,35 @@
+project.css
+
+#menubalk
+{		
+  text-align: center;
+  height: 150px;
+   
+  border: 1px solid black;
+	-webkit-border-radius: 2px;	/* css3 chrome code voor het krommen van de hoeken van de rand*/
+	-moz-border-radius: 2px;	/*css3 mozilla code voor het krommen van de hoeken van de rand*/
+  border-radius: 2px;	/*css3 code voor het krommen van de hoeken van de rand*/
+  
+  background-image: url("menu.png");
+	-webkit-background-size:cover;	/* css3 code van safari/chrome voor de afmeting van de achterground*/
+	-moz-background-size:cover;	/*css3 code van mozilla voor de afmeting van de achterground*/
+	-o-background-size:cover;	/*css3 code van opera voor de afmeting van de achterground*/
+  background-size:cover; /*css3*/
+  
+}
+
+.menu
+{
+	list-style:none;	/* code voor het weglaten van de opsommingsbolletjesn */
+	display:inline;	/* de verschillende kinks naar de andere pagina wordfen naast elkaar gezet*/ 
+	
+}
+
+.menuopmaak 
+{
+  margin:0px 50px 0px 50px;
+  text-decoration: none;
+  color: blue;
+  font-size: 20px;
+  
+}

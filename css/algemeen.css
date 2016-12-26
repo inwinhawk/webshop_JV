@@ -1,0 +1,44 @@
+body, h1, h2, div, p 
+{
+  font-family: verdana;
+ 
+}
+
+h1,h2 
+{
+  font-weight: bold;
+  margin: 5px 5px 5px 5px;
+} 
+
+h1 
+{
+  display: block;
+  font-size: 30px;
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+h6
+{
+  display: block;
+  font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin:0px 0px 20px;
+  font-family: Arial;
+  font-weight:600;
+}
+
+h3
+{
+	font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+	
+}
+
+p 
+{
+  padding: 5px 5px 5px 5px;
+  line-height: 1.5;
+}

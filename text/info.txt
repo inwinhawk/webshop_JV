@@ -1,0 +1,53 @@
+<div class="span3">
+		<h6>Klantenservice</h6>
+		<div class= " menu-footer">
+			<ul>
+			<li class="list">
+			<a href=""> Mijn account</a>
+			</li>
+			<li class="list">
+			<a href=""> Winkelmandje</a>
+		</li>
+		</div>
+	</div>
+	
+	<div class="span3">
+		<h6>Zwemshop Denayer</h6>
+		<div class= " menu-footer">
+			<p>
+			Jan Pieter de Nayerlaan 5
+			<br>
+			2860 Sint-Katelijne-Waver
+			<br>
+			tel:015 31 69 44
+		</div>
+	</div>		
+	
+	
+	
+<div class="info">
+	<div class="span3">
+		<h6>Klantenservice</h6>
+		<div class= " menu-footer">
+			<ul>
+			<li class="list">
+			<a href=""> Mijn account</a>
+			</li>
+			<li class="list">
+			<a href=""> Winkelmandje</a>
+		</li>
+		</div>
+	</div>
+
+	<div class="span3">
+		<h6>Zwemshop Denayer</h6>
+		<div class= " menu-footer">
+			<p>
+			Jan Pieter de Nayerlaan 5
+			<br>
+			2860 Sint-Katelijne-Waver
+			<br>
+			tel:015 31 69 44
+		</div>
+	</div>
+</div>

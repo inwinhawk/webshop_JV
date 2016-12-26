@@ -1,0 +1,24 @@
+	<div>
+		<img src="images/speedo1.jpg" alt="speedo" ;/>
+	</div>
+	
+	<div>
+		<img src="images/speedo2.jpg" alt="speedo" ;/>
+	</div>
+	
+	<div>
+		<img src="images/speedo3.jpg" alt="speedo" ;/>
+	</div>
+	
+	<div>
+		<img src="images/speedo4.jpg" alt="speedo" ;/>
+	</div>
+	<div>
+		<img src="images/speedo5.jpg" alt="speedo" ;/>
+	</div>
+	<div>
+		<img src="images/speedo6.jpg" alt="speedo" ;/>
+	</div>
+	<div>
+		<img src="images/speedo7.jpg" alt="speedo" ;/>
+	</div>

@@ -1,0 +1,20 @@
+<?php
+	//start the session
+	session_start();
+	
+	//check to make sure the session variable is registered
+	if(isset($_SESSION['username']))
+	{
+		//session variable is registered, user is allowed to see anything that follows
+?>
+		
+
+<?php	        
+        echo "Welcome ". $_SESSION['username'].", you are succesfully logged in.";
+	}
+	else
+	{
+		//session variable isn't registered, send back to login page
+		header( "Location: mijnaccount.txt" );
+	}
+?>

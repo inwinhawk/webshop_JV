@@ -1,0 +1,30 @@
+<?php
+
+$host 		= "localhost";
+$user		= "Webgebruiker";
+$password	= "Labo2017";
+$database	= "Webshop";	
+
+	$link = mysqli_connect($host, $user, $password) or die("Er kan geen connectie gelegd worden met $host");
+
+	mysqli_select_db($link, $database) or die("databank $database niet beschikbaar");
+
+
+<ul class="product-list">
+	<li class="standard-item" style="position: absolute; left: 0px; top: 0px;">
+			
+
+		<img class="image" id="powerback" src="images/powerback.jpg" alt="powerback" onmouseover="over()" onmouseout="uit()">
+		
+		<div class="title">
+			<div class="prices">                                                                                            
+				<span class="price">
+					&euro; 50.00
+				</span>                        
+			</div>
+			<h3>Badpak powerback</h3>
+		</div>
+	</li>
+	
+</ul>		
+	

@@ -1,0 +1,135 @@
+<?php
+                //session starten
+                session_start();
+        
+
+
+                //include hier connect.php == connectie met databank 
+                include 'dbconnect.php';
+
+                $sql = "SELECT voornaam,wachtwoord,admin FROM Klant";
+				//$result = mysqli_query($link,$sql);
+				$result = $conn->query($sql);
+                
+                //KlantID opslagen voor bestel pagina
+        
+                if(isset($row['klant_ID']))
+                {
+                      $_SESSION['klant_ID'] = $row['klant_ID'];
+                }
+              
+                   //  output data of each row
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        $login[] = $row;
+                        
+                    }
+                
+                // create array with login data (will be replaced by database later on)
+/*$login=array(
+		array(addslashes("Ruben.Charlier@hotmail.com"), md5("hallo"))
+);
+*/
+
+//zoekfunctie
+function search_user($user, $pass, $login)
+{
+	$len=count($login);
+	for($i=0;$i<$len;$i++)
+	{
+        //kijken of username en paswoord correct zijn
+		if(($login[$i][0] == $user) && ($login[$i][1] == $pass))
+        {
+           
+            //Kijken of persoon Admin is of niet
+           if(($login[$i][2])==true)
+           {
+               //als admin is, return 2
+                return 2;
+           }
+        else
+        {
+            //geen admin
+            return 1;
+        }
+            
+            
+        }
+			
+	}
+	return 0;			
+}
+             
+
+//kijken of user pagina direct probeert te accessen, indien nodig redirecten naar login pagina
+if (!isset($_POST['username']) || !isset($_POST['password'])) 
+{
+    header("Location:mijnaccount.php");
+    
+    
+} //extra controle om te kijken of velden ingevuld zijn
+elseif (empty($_POST['username']) || empty($_POST['password'])) 
+{
+    header("Location:mijnaccount.php");
+} else
+{
+    //velden omzetten naar variabelen en addslashes aan username toevoegen en md5() aan password
+    $user = addslashes(mysqli_real_escape_string($link,$_POST['username']));
+    $pass = md5(mysqli_real_escape_string($link,$_POST['password']));
+    
+    //zresultaat van zoekfunctie ophalen
+    $result = search_user($user, $pass, $login);
+
+    
+    //Kijken of er iets gereturned wordt
+    //login OK maar geen admin
+    if ($result == 1)
+    {
+        //sessie starten en variabele invullen
+        session_start();
+        $_SESSION['username'] = $user;
+        $_SESSION['admin'] = false;
+
+        //Gelukt!
+        echo 'Success!';
+
+        //naar andere pagina sturen 
+        header("Location:checkLogin.php");
+    }
+    
+    //Login OK maar wel admin
+    if($result ==2)
+    {
+        //start the session and register a variable
+        session_start();
+        $_SESSION['username'] = $user;
+        //meegeven om te vermijden dat gewone user ook admin dingen kan doen
+        $_SESSION['Admin'] = true;
+
+        echo 'Success!';
+
+        //redirect naar admin pagina
+        header("Location: ..checkLogin.php");
+        
+    }
+    if($result ==0)
+    {
+        //PHP error oplossen
+        $_SESSION['Admin'] = false;
+        echo "Foute inloggegevens<br/>";
+        echo "<a href = \"..account.php\">Terug </a>";
+    }
+    
+    
+ /*   else {
+        //header("Location: ../php/account.php");
+        //header("Fout bij aanmelden!");
+        echo "Foute inloggegevens<br/>";
+        echo "<a href = \"../php/account.php\">Terug </a>";
+       
+       
+    }
+    */
+}
+   $conn->close();
+?>

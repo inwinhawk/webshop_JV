@@ -1,0 +1,53 @@
+<?php
+session_start();
+//$session al in gelogd naar random pagina 
+ if(isset($_SESSION['username']))
+ {
+	 header("Location:index.php");
+ }
+
+	if (!isset($_POST['username']) || !isset($_POST['password']))
+	{
+		header( "Location: mijnaccount.php");
+	}
+
+	//check that form fields are not empty. Redirect back to login page if they are
+	elseif (empty($_POST['username']) || empty($_POST['password']))
+	{
+		header( "Location: mijnaccount.php");
+	}
+ 
+    include "dbconnect.php";
+
+$query="SELECT admin,voornaam,wachtwoord FROM Klant WHERE voornaam='".$_POST['username']."' and wachtwoord='".md5($_POST['password'])."' ";
+echo("$query");
+$result = mysqli_query($link1,$query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query");
+if ((mysqli_num_rows($result)) == 1)
+{
+	$row=mysqli_fetch_array($result);
+	
+	$admin=$row['admin'];
+	echo"$admin";
+	if($admin==1)
+	{
+		header( "Location: dames.php");
+	}
+	
+	//start the session and register a variable
+		
+		$_SESSION['username'] = $user;
+		echo "$user";
+			
+		//successful login code will go here...
+		echo "Success!";
+			
+		//we will redirect the user to another page where we will make sure they're logged in
+		header( "Location: checkLogin.php");
+}
+	else
+	{	
+		header("Location: mijnaccount.php");
+	}
+mysqli_close($link1);
+
+?>
