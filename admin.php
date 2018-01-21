@@ -154,7 +154,7 @@
 			{
 			
 			echo "Welcome ".$_SESSION['username']." , you are succesfully logged in.";
-			echo "<br/> Je bevind je de pagina waar je de gegevens in de databank kan aanpassen.<p/>";
+			echo "<br/><br/><p> Je bent ingelogd als administrator.<br/>Je bevind je de pagina waar je de gegevens in de databank kan aanpassen.</p>";
 			
 			 echo("<div class=\"links\">
 					<h2 >Hieronder vind u de gegevens die in onze databank van u staat. </h2>
@@ -171,7 +171,7 @@
                     ($row = mysqli_fetch_assoc($result)); //Haalt steeds volgende record uit set van records en slaat op als associatieve array
 
                     // geen while omdat het maar 1 keer getoond moet worden
-                        echo "<div class=\gegevens\"><br/>
+                        echo "<div class=\"gegevens\"><br/>
 							 Naam: ".$row["voornaam"]. "<br/>
 							 <span>Achternaam</span>: " . $row["naam"]."<br/>
 							 <span>Adres</span>: ". $row["adres"]."<br/>
@@ -190,17 +190,12 @@
                     
                     echo "<br/>";
 					echo"<ul>
-                    <li>
-                        <ul>
-                            
-                                <li><a href=\"admin.php?f=1\">Alle gebruikers tonen</a></li><t>
-                                <li><a href=\"admin.php?f=2\">Toon alle producten</a></li><t>
-                                <li><a href=\"admin.php?f=3\">Toon alle  fabrikanten's</a></li><t>
-                                <li><a href=\"admin.php?f=4\">Toon alle bestellingen</a></li><t>
-                                <li><a href=\"admin.php?f=5\">Voeg een product toe</a></li><br>
-                        
-                            </ul>
-                    </li></ul>";
+								<li><a href=\"admin.php?f=1\">Alle gebruikers tonen</a></li>
+                                <li><a href=\"admin.php?f=2\">Toon alle producten</a></li>
+                                <li><a href=\"admin.php?f=3\">Toon alle  fabrikanten's</a></li>
+                                <li><a href=\"admin.php?f=4\">Toon alle bestellingen</a></li>
+                                <li><a href=\"admin.php?f=5\">Voeg een product toe</a></li>
+						</ul>";
 					
 					if(isset($_GET['f']))
                     {
@@ -218,7 +213,7 @@
 
 								{
 									
-								   echo "<tr><td>" .$row['klant_ID']."</td><td>".$row["voornaam"]."</td><td>".$row['naam']."</td><td>".$row['email']."</td><td>" .$row['adres']."</td><td>" .$row['gemeente']."</td><td>" .$row['admin']."</td><td><a href=\"edit.php?ID={$row['klant_ID']}\">edit</a></td> <td><a href=\"delete.php?ID={$row['klant_ID']}\">delete</a></td><tr/>";
+								   echo "<tr><td>" .$row['klant_ID']."</td><td>".$row["voornaam"]."</td><td>".$row['naam']."</td><td>".$row['email']."</td><td>" .$row['adres']."</td><td>" .$row['gemeente']."</td><td>" .$row['admin']."</td> <td><a href=\"registreer.php\">add</a></td>   <td><a href=\"edit.php?ID={$row['klant_ID']}\">edit</a></td> <td><a href=\"delete.php?ID={$row['klant_ID']}\">delete</a></td><tr/>";
 
 								   
 								}
@@ -252,7 +247,7 @@
 											<td>".$row['prijs']."</td> 
 											<td><img src=\"".$row['afbeelding']."\"\"></td>
 											<td><a href=\"edit_product.php?PID={$row['product_ID']}\">edit</a></td>
-											<td><a href=\"delete_prod.php?PID={$row['product_ID']}\">delete</a></td>
+											<td><a href=\"delete.php?PID={$row['product_ID']}\">delete</a></td>
 										 <tr/>";
 								}
 								echo "</table>";
@@ -290,37 +285,36 @@
                         
                         
 						//als het 4 is, alle bestellingen tonen
-                         // if(($_GET['f'])==4)
-                        // {
-                              // $query = "SELECT klant.voornaam,klant.achternaam,bestelling.bestelling_ID, bestelling.besteldatum, product.product_ID, product.merk
-										// ,product.naam,product.prijs
+                         if(($_GET['f'])==4)
+                        {
+                              $query4 = "SELECT klant.voornaam,klant.naam,bestelling.bestelling_ID, bestelling.besteldatum, product.product_ID, product.merk, product.productnaam, product.prijs,bestelling.Betaald
 										
-										// FROM bestelling INNER JOIN productbestelling
-										// ON bestelling.bestellingID = productbestelling.bestelling_ID
-										// INNER JOIN klant
-										// ON klant.klant_ID = bestelling.Klant_ID
-										// INNER JOIN product 
-										// ON product.ProductID = bestellingproduct.product_ID
-										// ORDER BY klant.voornaam";
+										FROM bestelling INNER JOIN productbestelling
+										ON bestelling.bestelling_ID = productbestelling.bestelling_ID
+										INNER JOIN klant
+										ON klant.klant_ID = bestelling.Klant_ID
+										INNER JOIN product 
+										ON product.product_ID = productbestelling.product_ID
+										ORDER BY klant.voornaam";
 										
-                // $result = mysqli_query($link,$query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query");
+                $result = mysqli_query($link,$query4) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query");
 
-                // if (mysqli_num_rows($result)>0)
-                // {
-                      // echo("<table><tr><th>Voornaam</th><th>Achternaam</th><th>BestellingID</th><th>Besteldatum</th><th>ProductID</th><th>Productnaam</th><th>Productnaam</th><th>Geleverd</th><th>Betaald</th></tr>");
+                if (mysqli_num_rows($result)>0)
+                {
+                      echo("<br/><br/><table><tr><th>Voornaam</th><th>Achternaam</th><th>BestellingID</th><th>Besteldatum</th><th>ProductID</th><th>merk</th><th>Productnaam</th><th>Betaald</th></tr>");
                     //output data of each row
-                    // while($row = mysqli_fetch_assoc($result)) //De volgende record uit de reeks, wordt opgeslagen als een associatieve array
-                    // {
+                    while($row = mysqli_fetch_assoc($result)) //De volgende record uit de reeks, wordt opgeslagen als een associatieve array
+                    {
                         
-                         // echo "<tr><td>" .$row['Klantnaam']."</td><td>".$row["KlantAchternaam"]."</td><td>".$row['BestellingID']."</td><td>".$row['BestelDatum']."</td><td>" .$row['ProductID']."</td><td>" .$row['ProductFabrikant']."</td><td>" .$row['ProductNaam']."</td><td>" .$row['Geleverd']."</td><td>" .$row['Betaald']."</td><tr/>";
+                         echo "<tr><td>" .$row['voornaam']."</td><td>".$row["naam"]."</td><td>".$row['bestelling_ID']."</td><td>".$row['besteldatum']."</td><td>" .$row['product_ID']."</td><td>" .$row['merk']."</td><td>" .$row['productnaam']."</td><td>" .$row['Betaald']."</td><tr/>";
                        
-                    // }
-                    // echo "</table>";
-                // } else {
-                    // echo "Nog geen gebruikers geregistreerd<br/>";
-                // }
+                    }
+                    echo "</table>";
+                } else {
+                    echo "Nog geen gebruikers geregistreerd<br/>";
+                }
                             
-                        // }
+                      }
                         
                 //als het 5 is, product toevoegen
                          if(($_GET['f'])==5)
@@ -384,12 +378,12 @@
 											$result = mysqli_query($link, $query);
 											if($result)
 											{
-												echo "<script type='text/javascript'>alert('User Created Successfully.!')</script>";
+												echo "<script type='text/javascript'>alert('Product has been successfully created.!')</script>";
 												
 											}
 											else
 											{
-												echo ("<script type='text/javascript'>alert('User Registration Failed')</script>");
+												echo ("<script type='text/javascript'>alert('Product ceation failed.')</script>");
 
 											}
 										 }
@@ -398,7 +392,7 @@
 									else 
 									{
 										//Indien geen juiste gegevens gegevens, wordt er een melding gegeven
-										echo "het prodcut is niet aangemaakt kunnen worden<br/>Probeer opnieuw aub.<br/>";
+										echo "het product is niet aangemaakt kunnen worden<br/>Probeer opnieuw aub.<br/>";
 										
 									}
 								}
@@ -414,6 +408,12 @@
 								
 					
 			}
+			
+		else
+		{
+			echo"U hebt geen admin rechten voor de pagina.";
+			
+		}
 
 							 ?>	
         </div>
@@ -429,7 +429,5 @@
             <?php include "footer.php"; ?>
 		</div>
     </footer>
-	
-	</br>
     </body>
 </html>

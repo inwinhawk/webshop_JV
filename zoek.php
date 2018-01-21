@@ -22,7 +22,6 @@
 						
                         $afbeelding= $row['afbeelding'];
 						$id = $row['product_ID'];
-						//$cat_id = $row['cat_id'] ;
 						$productnaam=$row['productnaam'];
 						$beschrijving= $row['productbeschrijving'];
 						$prijs=$row['prijs'];

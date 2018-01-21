@@ -19,9 +19,9 @@
 
 			setInterval(function() { 
 			$('#slideshow > div:first')//eerste element inladen.
-			.fadeOut(1000) // wegvegen afbeelding  in ms
+			.fadeOut(200) // wegvegen afbeelding  in ms
 			.next() // volgende in de rij oproepen
-			.fadeIn(1000) // invegen nieuwe afbeelding in ms
+			.fadeIn(250) // invegen nieuwe afbeelding in ms
 			.end()// resetten van functie  alles terug normaal maken
 			.appendTo('#slideshow');// toevoegen aan slideshow
 			}, 5000);   // einde slide show + aantal seconden rust
@@ -52,7 +52,11 @@
         </div>
         <hr>
         <div id="inhoud">
-            <?php include("inhoud.txt") ?>
+           <h1>Home pagina</h1>
+
+			<a>Welkom bij The Swimshop.<br/> 
+			De webshop voor zwemkledij voor jong en oud .</a>
+
         </div>
 		<hr>
         <div id="slideshow">
@@ -69,8 +73,7 @@
             <?php include "footer.php"; ?>
 		</div>
     </footer>
-	</div>
-	</br>
+	<br/>
     </body>
 </html>
 

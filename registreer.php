@@ -50,35 +50,7 @@
 					document.getElementById("achternaam").style.border='1px solid grey';
 					document.getElementById("alertachternaam").style.display='none';
 				}
-				if (formulier.email.value == "")
-				{
-					document.getElementById("email").style.border='2px solid red';
-					document.getElementById("alertemail").style.display='inline';
-					sendmessage = false;
-				}
-				else 
-				{
-					document.getElementById("email").style.border='1px solid grey';
-					document.getElementById("alertemail").style.display='none';
-				}
-				if(formulier.email.value != "")
-				{
-					var email=email.value;
-					filter = /^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i;
-					filter = filter.test(email);
 				
-					if (filter)
-					{
-						document.getElementById("email").style.border='1px solid grey';
-						document.getElementById("alertemail").style.display='none';
-					}
-					else
-					{
-						document.getElementById("email").style.border='2px solid red';
-						document.getElementById("alertmail").style.display='inline';
-						sendmessage = false;
-					}
-				}
 				
 				if (formulier.adres.value == "")
 				{
@@ -102,6 +74,38 @@
 				{
 					document.getElementById("gemeente").style.border='1px solid grey';
 					document.getElementById("alertgemeente").style.display='none';
+				}
+				
+				if (formulier.email.value == "")
+				{
+					document.getElementById("email").style.border='2px solid red';
+					document.getElementById("alertemail").style.display='inline';
+					sendmessage = false;
+				}
+				else 
+				{
+					document.getElementById("email").style.border='1px solid grey';
+					document.getElementById("alertemail").style.display='none';
+				}
+				if(formulier.email.value != "")
+				{
+					var email=email.value;
+					filter = /^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i;
+					///^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+					// /^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i;
+					filter = filter.test(email);
+				
+					if (filter)
+					{
+						document.getElementById("email").style.border='1px solid grey';
+						document.getElementById("alertemail").style.display='none';
+					}
+					else
+					{
+						document.getElementById("email").style.border='2px solid red';
+						document.getElementById("alertemail").style.display='inline';
+						sendmessage = false;
+					}
 				}
 				
 				if (formulier.wachtwoord.value == "")
@@ -185,7 +189,7 @@
 			<p>Gemeente: <span class="verplicht">*</span> <span class="alert" id="alertgemeente">Gemeente is niet ingevuld!</span></p>
 				<input type="text" name="gemeente" id="gemeente" />
 			
-			<p>E-mail: <span class="verplicht">*</span> <span class="alert" id="alertemail">Geef een  geldig emailadres op!</span></p>
+			<p>E-mail: <span class="verplicht">*</span> <span class="alert" id="alertemail">Geef een geldig emailadres op!</span></p>
 				<input type="text" name="email" id="email" />
 			
 			<p>Wachtwoord: <span class="verplicht">*</span> <span class="alert" id="alertwachtwoord">wachtwoord is niet ingevuld!</span></p>
@@ -195,9 +199,7 @@
 			<div id="knoppen" >
 				<input type="submit" name="registreer" value="registreer">
 				<input type="reset" onclick="terug()" value="Alles leegmaken" >
-				<a href="mijnaccount.php">
-				<input type="button" value="Terug "/>
-				</a>
+				<input type="button" value="Terug" onclick="window.location.href='mijnaccount.php'">
 			</div>
 			<br>
         </form>
@@ -216,7 +218,9 @@ include "dbconnect.php";
              $a = mysqli_num_rows($query);
              if ($a >= 1) 
 			 {
-                 echo "name is already in use !";
+                 echo"<script type='text/javascript'>alert('name is already in use !')</script>";
+				 echo'<div style="Color:red">"name is already in use !"</div>';
+				 //echo "name is already in use !";
              }
 			 else
 			 {
@@ -247,7 +251,6 @@ include "dbconnect.php";
     <div class="footer-distributed">
         <?php include "info.php" ?>
     </div>
-</div>
 </div>
 <footer>
     <div id="voeter">

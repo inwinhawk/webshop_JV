@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>	Webshop van Jeroen Vastmans </title>
+    <title>zwemkledij dames</title>
 
     <link href="css/reset.css" rel="stylesheet"/>
     <link href="css/algemeen.css" rel="stylesheet"/>
@@ -16,12 +16,13 @@
 	<script type="text/javascript">
     <!--             
 			$(document).ready(function()
-                {
+                {					
                      $("#zoeken").keyup(function()
                     {
                         
                         $zoekterm = $("#zoeken").val();
                         console.log($zoekterm);
+						
                          
                          //hier komt de AJAX call
                          $request = $.ajax(
@@ -80,21 +81,17 @@
     <hr>
 	<div>
 		<ul id="soort">
-			<li>
-				<ul>
-					
 					<li><a href="dames.php">Alle producten</a></li>
 					<li><a href="dames.php?soort=bikini">bikini</a></li>
-					<li><a href="dames.php?merk=merk">merk &uarr; </a></li><b>
+					<li><a href="dames.php?merk=merk">merk &uarr; </a></li>
 					<li><a href="dames.php?prijs=prijs">prijs &uarr; </a></li>
 					<li><form action="#">
 						<p>
 						<input type="text" id="zoeken" name="input" placeholder ="Zoeken"/>
 						</p>
-					</form></li>
-				</ul>
-			</li>
+					</form></li>	
 		</ul>
+	</div>
 	<div id="Resultaten">
 		       	<?php
         //include hier connect.php == connectie met databank 
@@ -122,40 +119,33 @@
 				else
 				{
                 //Alle categorieën tonen (DISTINCT)
+				// STAP 3: SQL QUERY UITVOEREN
                  $query ="SELECT * FROM product where categorie='vrouw'";
 				}
 				
 				$result = mysqli_query($link, $query) or die(mysqli_error());
                 // output data of each row
-                    while($row = mysqli_fetch_array($result ))
+                    while($row = mysqli_fetch_array($result))
                     {
 						
                         $afbeelding= $row['afbeelding'];
 						$id = $row['product_ID'];
-						$_POST['PID']=$id;
-						//$cat_id = $row['cat_id'] ;
 						$productnaam=$row['productnaam'];
 						$beschrijving= $row['productbeschrijving'];
 						$prijs=$row['prijs'];
                         
                         echo "<div>";
-                        echo "<a href=\"product.php?ID=".$id."\">$productnaam </a>";
-						echo "<img src=$afbeelding alt=\"Picture not found,Please Report this to us!\" title=\"Meer info\" class = \"productimg\"><br>";				
+                        echo "<a href=\"product_class.php?ID=".$id."\">".htmlspecialchars($productnaam)." </a>";
+						echo "<img src=\"".htmlspecialchars($row["afbeelding"])."\" alt=\"Picture not found,Please Report this to us!\" title=\"Meer info\" class = \"productimg\"><br>";				
                         
                         //naar winkelmandje
-                        echo "<form>
-
-						<p> Prijs:  € ".$row["prijs"]."";	
+                        echo"<p> Prijs:  € ".htmlspecialchars($row["prijs"])."</p>";	
 						if(isset($_SESSION['loggedin']))
 						{
 							echo" <a class=\"Inwinkelmand\" href=\"Winkelmand.php?ID={$row['product_ID']}\">&#128722;</a>";
 						}
 						//<a class=\"Inwinkelmand\" href=\"Winkelmand.php?ID={$row['product_ID']}\">&#128722;</a>
-						echo "<form> </br><a href=\"product.php?ID=".$id."\" style= text-align:>More Info </a></t>
-						
-						</p>
-                                              
-                        </form>";
+						echo "<form> <a href=\"product_class.php?ID=".$id."\" style= text-align:>More Info </a></form><br/>";
                      echo"</div>";
                     }
                  
@@ -163,8 +153,7 @@
 
                 ?>
 		</div>
-    </div>
-	    
+    	    
 	<hr>
     <div class="footer-distributed">
         <?php include "info.php" ?>

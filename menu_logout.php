@@ -7,8 +7,5 @@
 	<li class="menu"><a class="menuopmaak" href="index.php"> Overzicht </a></li>
 	<li class="menu"><a class="menuopmaak" href="logout.php"> Logout </a></li>
 	
-	<li class="menu"><a class="menuopmaakrechts" href="Winkelmand.php?ID=-1"> &#128722 </a></li>
-
-
-
+	<li class="menu"><a class="menuopmaakrechts" href="Winkelmand.php?ID=-1"> &#128722; </a></li>
 </ul>

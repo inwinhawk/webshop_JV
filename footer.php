@@ -1,3 +1,3 @@
 <p>
-Copyright &copy; Thomas More Campus De Nayer - Professionele bachelor Elektronica-ICT – 2016 
+Copyright &copy; Jeroen Vastmans - Professionele bachelor Elektronica-ICT – 2016 
 </p>

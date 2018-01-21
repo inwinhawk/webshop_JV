@@ -68,13 +68,12 @@
 	
 <br>
 <p> Nog geen account ?</p>
-<a href="registreer.php"><input type="submit" value="register" name="register"></a >
+<a href="registreer.php"><input type="submit" value="register" name="register"></a>
     </div>
     <hr>
     <div class="footer-distributed">
         <?php include "info.php"; ?>
     </div>
-</div>
 </div>
 <footer>
     <div id="voeter">

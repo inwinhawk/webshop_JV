@@ -9,7 +9,7 @@ session_start();
 
 		if (mysqli_query($link, $sql)) 
 		{
-			header("Refresh:0,url=admin.php");
+			header("Refresh:0,url=admin.php?f=1");
 		} 
 		else 
 		{
@@ -18,6 +18,20 @@ session_start();
 		mysqli_close($link);
 		}
 		
-		if 
+		if(isset($_GET['PID']))
+		{
+		$Prod_ID = $_GET["PID"];
+		$sql = "DELETE FROM product WHERE product_ID = ".$Prod_ID." ";
+
+		if (mysqli_query($link, $sql)) 
+		{
+			header("Refresh:0,url=admin.php?f=2");
+		} 
+		else 
+		{
+			echo "Error deleting record: " . mysqli_error($link);
+		}
+		mysqli_close($link);
+		}			
 
 ?>

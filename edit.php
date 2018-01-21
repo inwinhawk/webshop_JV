@@ -176,9 +176,9 @@
             <p> * verplicht in te vullen !!</p><br><br>
 			<?php
 			include "dbconnect.php";
-			echo"<p> De gebruiker_ID is ".$ID." </p>";
+			echo"<p> De gebruiker_ID is ".$ID." <br/></p>";
 			$query="SELECT * FROM Klant where klant_ID=".$_GET["ID"]." ";
-			echo ("$query");
+			
 			$result = mysqli_query($link,$query) or die(mysqli_error());
 
 
@@ -221,9 +221,7 @@
 			<div id="knoppen" >
 				<input type="submit" name="aanpassen" value="aanpassen">
 				<input type="reset" onclick="terug()" value="Alles leegmaken" >
-				<a href="admin.php">
-				<input type="button" value="Terug "/>
-				</a>
+				<input type="button" value="Terug" onclick="mijnaccount.php"/>
 			</div>
         </form>
 		
@@ -255,7 +253,7 @@
 			if($result)
 			{
 				echo "<script type='text/javascript'>alert('User Created Successfully.!')</script>";
-				header("Location: admin.php");
+				
 
 				
 			}
@@ -276,7 +274,6 @@
         <?php include "info.php" ?>
     </div>
 </div>
-<div>
 
 <footer>
     <div id="voeter">

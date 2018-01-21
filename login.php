@@ -109,7 +109,7 @@ elseif (empty($_POST['username']) || empty($_POST['password']))
         echo 'Success!';
 
         //naar andere pagina sturen 
-        header("Location: CheckLogin.php");
+        header("Location: checkLogin.php");
     }
     
     //Login OK maar wel admin

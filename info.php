@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<body>
 	 <div class="footer-left">
 
-				<h3>Company<span>logo</span></h3>
+				<h3>Zwemshop<span> Denayer</span></h3>
 
 				<p class="footer-links">
 					<a href="index.php">Home</a>
@@ -14,7 +11,7 @@
 					·
 					<a href="heren.php">Heren</a>
 					·
-					<a href="meisjes.php">Meisjes</a>
+					<a href="meisje.php">Meisjes</a>
 					·
 					<a href="jongens.php">Jongens</a>
 				</p>
@@ -51,5 +48,4 @@
 				</p>
 			</div>
 			
-			</body>
-			</html>
+			

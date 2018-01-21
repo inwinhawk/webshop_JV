@@ -60,9 +60,10 @@
         //$w1 = new Item('W139', 'Product 1', 23.45);
         //$w2 = new Item('W384', 'Product 2', 12.39);
         //$w3 = new Item('W55', 'Product 3', 5.00);
-			
-		echo "<pre>";
-print_r($_SESSION); echo "</pre>";
+		
+// testing van winkelmandje		
+		//echo "<pre>";
+//print_r($_SESSION); echo "</pre>";
 	
 	try {
         
@@ -76,7 +77,6 @@ print_r($_SESSION); echo "</pre>";
         }
                
         $aantal = count($cart)+1;
-		echo $aantal;
         //via databank
          // output data of each row
        while($row = $result->fetch_assoc())
@@ -86,16 +86,17 @@ print_r($_SESSION); echo "</pre>";
                        
             
             $prod = new Item($row['product_ID'], $row['productnaam'], $row['prijs'], $row['merk']);
-			echo "<pre>";print_r($prod);echo("</pre>");
+			//echo "<pre>";print_r($prod);echo("</pre>");
             $cart->addItem($prod);
-			echo "<pre>";print_r($cart);echo("</pre>");
+			//echo "<pre>";print_r($cart);echo("</pre>");
            
             //wordt opslagen zodat we het op de bestelpagina kunnen gebruiken(productbestelling vullen)
 		}
 		
         //zodat gegevens uit winkelmandje niet vergeten worden
         $_SESSION['kar'] = $cart;
-         echo "<pre>";print_r($_SESSION);echo("</pre>");     
+		
+         //echo "<pre>";print_r($_SESSION);echo("</pre>");     
         
         // Update some quantities:
         //$cart->updateItem($w2, 4);
@@ -147,7 +148,7 @@ print_r($_SESSION); echo "</pre>";
             
             echo "<br/>Totaalbedrag: &#8364;".$totaalbedrag;
             //Bestel knop 
-            echo" <br/><a href=\"Bestel.php\">Bestel</a> ";   
+            echo" <br/><a href=\"bestel.php\">Bestel</a> ";   
             
          
             
@@ -179,8 +180,7 @@ print_r($_SESSION); echo "</pre>";
     <div class="footer-distributed">
         <?php include "info.php" ?>
     </div>
-	</div> 
-<div>
+</div> 
 
 <footer>
     <div id="voeter">

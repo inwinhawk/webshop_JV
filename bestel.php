@@ -11,52 +11,6 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> 
 	<script type="text/javascript" src="js/jquery.js"></script>
     
-		<!-- Ajax zoekfunctie -->
-     
-	<script type="text/javascript">
-    <!--             
-			$(document).ready(function()
-                {
-                     $("#zoeken").keyup(function()
-                    {
-                        
-                        $zoekterm = $("#zoeken").val();
-                        console.log($zoekterm);
-                         
-                         //hier komt de AJAX call
-                         $request = $.ajax(
-                             {
-                             
-                             method:"POST",
-                             url:"zoek.php",
-                             data: {zoek: $zoekterm},
-                             });
-			
-                         $request.done(function(msg)
-                                      
-                                       {
-                             //jquery effect, miliseconden of slow of fast
-                             $("#Resultaten").fadeOut("500", function()
-                                        
-                                                    
-                            {
-                                 $("#Resultaten").html(msg);
-                                 $("#Resultaten").fadeIn("slow");
-                             });
-                         
-                         });
-			
-                         $request.fail(function(jqXHR, textStatus)
-                                       {
-                             $("#Resultaten").html("Request failed: " + textStatus);
-                         });
-			
-                     });     
-        
-	
-                 });
-//-->
-</script>
 </head>
 <body>
 
@@ -78,7 +32,7 @@
 		?>
     </div>
     <hr>
-	  <h2 class="inhoud">Bestel</h2></p>
+	  <h2 class="inhoud">Bestel</h2>
          <div class="inhoud">
                 <?php
        
@@ -94,15 +48,15 @@
 
                 //Toon de klantgegevens
         
-					echo("<h2 Bestel hier uw producten</h2>");
+					echo("<h2> Bestel hier uw producten</h2>");
                        
                     
                      if(isset($_SESSION['kar']) && !empty($_SESSION['kar']))
 					 {
                          //eerst klantid ophalen uit tabel klanten om te kunnen invoeren bij tabel bestelling
                          $query1 = "SELECT klant_ID FROM klant   WHERE  klant.voornaam =\"".$_SESSION['username']."\"";
-						$result1 = mysqli_query($link, $query1) or die(mysqli_error());
-                        while($row1 = mysqli_fetch_array($result1))							 //Haalt het volgende record uit set van records en deze wordt opgeslagen als een associatieve array
+						$result1 = mysqli_query($link, $query1);
+                        while($row1 = mysqli_fetch_assoc($result1))							 //Haalt het volgende record uit set van records en deze wordt opgeslagen als een associatieve array
                           {
                               $klant_ID = $row1['klant_ID'];
 							                          
@@ -110,16 +64,16 @@
                          
                          
                          //Voeg de benodigde gegevens in, in tabel bestelling
-                          $query = "INSERT INTO bestelling(Klant_ID,besteldatum,Betaald) VALUES ('".$klant_ID."','".date("Y/m/d")."','1')";
+                          $query = "INSERT INTO bestelling(klant_ID,besteldatum,Betaald) VALUES ('".$klant_ID."','".date("Y/m/d")."','1')";
                          
-                         //query om bestellingID op te halen bestelling met hoogste bestelnummer is de laatste
-                         $query2 = "SELECT MAX(bestelling_ID) FROM bestelling WHERE Klant_ID =\"".$klant_ID."\" ";
+                         //query om bestellingID op te halen bestelling met hoogste bestelnummer ,deze is de laatste toegevoegde bestelling
+                         $query2 = "SELECT MAX(bestelling_ID) FROM bestelling WHERE klant_ID =\"".$klant_ID."\" ";
                          
                        
                                                   
                          if (mysqli_query($link, $query) === TRUE) 
                          {
-                             echo "Deze producten zijn aan je bestelling toegevoegd:<br/>";
+                             echo "Deze producten zijn aan je bestelling toegevoegd:<br/><br/>";
                              //echo "<a href=\"webshop.php\">Terug</a><br/>";
                          } 
 						 else
@@ -151,10 +105,11 @@
                              
                          } else
                          {
-                             echo "Error: " . $query2 . "<br>" . mysqli_error();
+                             echo "Error: " . $query3 . "<br>" . mysqli_error();
                          }
                              
                          }
+						unset($_SESSION['kar']);
                          echo "<br/><a href=\"index.php\">Terug naar home</a><br/>";
                          
                     }
@@ -169,22 +124,23 @@
                       //echo  "<a href=\"../php/Logout.php\">logout</a>";
                     
                          //connectie sluiten
-				mysqli_close($link);
+					mysqli_close($link);
                     
                                     
-                } else {
+                } 
+				
+				else
+				{
                     //Als de gebruiker niet ingelogd is, hem eerst  vragen om in te loggen
                     echo "Alvorens dat je iets kan bestellen, moet je ingelogd zijn. Gelieve je in te loggen<br/><a href=\"mijnaccount.php\"><br/>";
                     echo  "<a href=\"mijnaccount.php\">Inloggen</a>";
                     
                 }
-            
-        
-                echo "</div>";
-        
+                   
                 ?>    
+				</div>
               
-            </div>	   
+            	   
 	<hr>
     <div class="footer-distributed">
         <?php include "info.php" ?>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>	Webshop van Jeroen Vastmans </title>
+    <title>zwemkledij heren</title>
 
     <link href="css/reset.css" rel="stylesheet"/>
     <link href="css/algemeen.css" rel="stylesheet"/>
@@ -79,21 +79,18 @@
     <hr>
     <div>
 		<ul id="soort">
-			<li>
-				<ul>
-					
+							
 					<li><a href="heren.php">Alle producten</a></li>
 					<li><a href="heren.php?soort=Jammer">jammer</a></li>
-					<li><a href="heren.php?merk=merk">merk &uarr; </a></li><b>
+					<li><a href="heren.php?merk=merk">merk &uarr; </a></li>
 					<li><a href="heren.php?prijs=prijs">prijs &darr; </a></li>
 					<li><form action="#">
 						<p>
 						<input type="text" id="zoeken" name="input" placeholder ="Zoeken"/>
 						</p>
 					</form></li>
-				</ul>
-			</li>
 		</ul>
+	</div>
 	<div id="Resultaten">
 		       	<?php
         //include hier connect.php == connectie met databank 
@@ -133,29 +130,21 @@
 						
                         $afbeelding= $row['afbeelding'];
 						$id = $row['product_ID'];
-						//$cat_id = $row['cat_id'] ;
 						$productnaam=$row['productnaam'];
 						$beschrijving= $row['productbeschrijving'];
 						$prijs=$row['prijs'];
                         
                         echo "<div>";
-                        echo "<a href=\"product.php?ID=".$id."\">$productnaam </a>";
+                        echo "<a href=\"product_class.php?ID=".$id."\">$productnaam </a>";
 						echo "<img src=$afbeelding alt=\"Picture not found,Please Report this to us!\" title=\"Meer info\" class = \"productimg\"><br>";				
                         
-                        //naar winkelmandje
-                        echo "<form>
-
-						<p> Prijs:  € ".$row["prijs"]."";	
+                       	echo"<p> Prijs:  € ".$row["prijs"]."</p>";
 						if(isset($_SESSION['loggedin']))
 						{
 							echo" <a class=\"Inwinkelmand\" href=\"Winkelmand.php?ID={$row['product_ID']}\">&#128722;</a>";
 						}
 						//<a class=\"Inwinkelmand\" href=\"Winkelmand.php?ID={$row['product_ID']}\">&#128722;</a>
-						echo "<form> </br><a href=\"product.php?ID=".$id."\" style= text-align:>More Info </a></t>
-						
-						</p>
-                        </form>";
-
+						echo "<form> <a href=\"product_class.php?ID=".$id."\" style= text-align:>More Info </a></form><br/>";						
                         echo"</div>";
                     }
                  
@@ -164,14 +153,13 @@
                 ?>
 
     </div>
-</div>	
+	
 	  <hr> 
 
     <div class="footer-distributed">
         <?php include "info.php" ?>
     </div>
 </div>
-<div>
 
 <footer>
     <div id="voeter">

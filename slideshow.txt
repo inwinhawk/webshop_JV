@@ -1,24 +1,35 @@
 	<div>
-		<img src="images/speedo1.jpg" alt="speedo" ;/>
+		<img src="images/speedo1.jpg" alt="speedo1" />
 	</div>
 	
 	<div>
-		<img src="images/speedo2.jpg" alt="speedo" ;/>
+		<img src="images/speedo2.jpg" alt="speedo2"/>
 	</div>
 	
 	<div>
-		<img src="images/speedo3.jpg" alt="speedo" ;/>
+		<img src="images/speedo3.jpg" alt="speedo3"/>
 	</div>
 	
 	<div>
-		<img src="images/speedo4.jpg" alt="speedo" ;/>
+		<img src="images/speedo4.jpg" alt="speedo4"/>
 	</div>
+	
 	<div>
-		<img src="images/speedo5.jpg" alt="speedo" ;/>
+		<img src="images/speedo5.jpg" alt="speedo5"/>
 	</div>
+	
 	<div>
-		<img src="images/speedo6.jpg" alt="speedo" ;/>
+		<img src="images/speedo6.jpg" alt="speedo6" />
 	</div>
+	
 	<div>
-		<img src="images/speedo7.jpg" alt="speedo" ;/>
+		<img src="images/speedo7.jpg" alt="speedo7" />
+	</div>
+	
+	<div>
+		<img src="images/nabaiji1.jpg" alt="nabaiji1" />
+	</div>
+	
+	<div>
+		<img src="images/adidas1.jpg" alt="adidas1" />
 	</div>
